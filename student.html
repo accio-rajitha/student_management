@@ -1,0 +1,41 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Student Portal</h1>
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button id="searchButton">Search</button>
+    <div id="buttons" class="flex-box">
+      <button id="sortAZ">Sort A-Z</button>
+      <button id="sortZA">Sort Z-A</button>
+      <button id="sortByMarks">Sort by Marks</button>
+      <button id="sortByPassing">Sort by Passing</button>
+      <button id="sortByClass">Sort by Class</button>
+      <button id="sortByGender">Sort by Gender</button>
+    </div>
+    <table id="studentTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Class</th>
+          <th>Marks</th>
+          <th>Passing</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody id="studentData"></tbody>
+    </table>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
