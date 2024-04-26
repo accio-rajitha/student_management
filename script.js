@@ -1,5 +1,5 @@
 // script.js
-// script.js
+
 
 const studentDataUrl = 'https://gist.githubusercontent.com/harsh3195/b441881e0020817b84e34d27ba448418/raw/c4fde6f42310987a54ae1bc3d9b8bfbafac15617/demo-json-data.json';
 const studentTable = document.getElementById('studentTable');
@@ -9,7 +9,6 @@ const searchButton = document.getElementById('searchButton');
 
 let students = [];
 
-// Fetch student data from URL
 fetch(studentDataUrl)
   .then(response => response.json())
   .then(data => {
@@ -17,7 +16,7 @@ fetch(studentDataUrl)
     renderStudents(students);
   });
 
-// Function to render students in the table
+
 function renderStudents(students) {
   studentDataContainer.innerHTML = '';
   students.forEach(student => {
@@ -40,7 +39,7 @@ function renderStudents(students) {
   });
 }
 
-// Function to filter students based on search input
+
 function searchStudents(query) {
   const filteredStudents = students.filter(student => {
     const fullName = `${student.first_name} ${student.last_name}`.toLowerCase();
@@ -50,36 +49,36 @@ function searchStudents(query) {
   renderStudents(filteredStudents);
 }
 
-// Event listener for search button click
+
 searchButton.addEventListener('click', () => {
   const searchQuery = searchInput.value.toLowerCase();
   searchStudents(searchQuery);
 });
-// Event listener for sort A->Z button click
+
 document.getElementById('sortAZ').addEventListener('click', () => {
     students.sort((a, b) => a.first_name.localeCompare(b.first_name));
     renderStudents(students);
   });
   
-  // Event listener for sort Z->A button click
+  
   document.getElementById('sortZA').addEventListener('click', () => {
     students.sort((a, b) => b.first_name.localeCompare(a.first_name));
     renderStudents(students);
   });
   
-  // Event listener for sort by marks button click
+ 
   document.getElementById('sortByMarks').addEventListener('click', () => {
     students.sort((a, b) => a.marks - b.marks);
     renderStudents(students);
   });
   
-  // Event listener for sort by passing button click
+  
   document.getElementById('sortByPassing').addEventListener('click', () => {
     const passingStudents = students.filter(student => student.passing);
     renderStudents(passingStudents);
   });
   
-  // Event listener for sort by class button click
+
   
   document.getElementById('sortByClass').addEventListener('click', () => {
     students.sort((a, b) => a.class.localeCompare(b.class));
