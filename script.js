@@ -78,7 +78,7 @@ document.getElementById('sortAZ').addEventListener('click', () => {
     renderStudents(passingStudents);
   });
   
-
+ 
   
   document.getElementById('sortByClass').addEventListener('click', () => {
     students.sort((a, b) => a.class.localeCompare(b.class));
