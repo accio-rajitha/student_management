@@ -4,16 +4,16 @@ const searchInput = document.getElementById('searchInput');
 
 let students = [];
 
-// Fetch and render student data
+
 fetch(studentDataUrl)
   .then(response => response.json())
   .then(data => {
     students = data;
-    renderStudents(students); // Render in default order
+    renderStudents(students); 
   })
   .catch(error => console.error('Error fetching data:', error));
 
-// Render students in the table
+
 function renderStudents(studentList) {
   studentDataContainer.innerHTML = studentList.map(student => {
     const fullName = `${student.first_name} ${student.last_name}`;
@@ -34,7 +34,7 @@ function renderStudents(studentList) {
   }).join('');
 }
 
-// Search functionality
+
 searchInput.addEventListener('input', () => {
   const query = searchInput.value.toLowerCase();
   const filteredStudents = students.filter(student => {
@@ -45,7 +45,7 @@ searchInput.addEventListener('input', () => {
   renderStudents(filteredStudents);
 });
 
-// Sorting functionalities
+
 document.getElementById('sortAZ').addEventListener('click', () => {
   students.sort((a, b) => a.first_name.localeCompare(b.first_name));
   renderStudents(students);
