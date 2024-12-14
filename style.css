@@ -2,26 +2,22 @@
 
 body {
   font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
 }
 
 h4 {
   background-color: #000;
   color: #fff;
   padding: 20px;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-table, th, td {
-  border: 1px solid black;
-}
-
-th, td {
-  padding: 8px;
-  text-align: left;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .search {
@@ -31,15 +27,24 @@ th, td {
 
 #searchInput {
   width: 100%;
-  padding: 5px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 button {
   background-color: #000;
   color: #fff;
-  padding: 10px;
+  padding: 10px 15px;
   border: none;
   cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #444;
 }
 
 .flex-box {
@@ -48,4 +53,26 @@ button {
   gap: 10px;
   margin-bottom: 20px;
   justify-content: space-between;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  font-size: 16px;
+}
+
+td img {
+  vertical-align: middle;
+  margin-right: 10px;
+  border-radius: 50%;
 }
