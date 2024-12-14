@@ -4,16 +4,16 @@ const searchInput = document.getElementById('searchInput');
 
 let students = [];
 
-
+// Fetch the JSON data
 fetch(studentDataUrl)
   .then(response => response.json())
   .then(data => {
     students = data;
-    renderStudents(students); 
+    renderStudents(students); // Initial rendering
   })
   .catch(error => console.error('Error fetching data:', error));
 
-
+// Function to render students in the table
 function renderStudents(studentList) {
   studentDataContainer.innerHTML = studentList.map(student => {
     const fullName = `${student.first_name} ${student.last_name}`;
@@ -23,7 +23,12 @@ function renderStudents(studentList) {
     return `
       <tr>
         <td>${student.id}</td>
-        <td><img width="30px" height="30px" src="https://images.unsplash.com/photo-1645349286356-52b1ed83376a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG5pY2UlMjBmYWNlfGVufDB8fDB8fHww" style="border-radius: 50%;" alt="Profile">${fullName}</td>
+        <td>
+          <img width="30px" height="30px" 
+               src="https://images.unsplash.com/photo-1645349286356-52b1ed83376a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG5pY2UlMjBmYWNlfGVufDB8fDB8fHww" 
+               alt="Profile picture of ${fullName}">
+          ${fullName}
+        </td>
         <td>${gender}</td>
         <td>${student.class}</td>
         <td>${student.marks}</td>
@@ -34,7 +39,7 @@ function renderStudents(studentList) {
   }).join('');
 }
 
-
+// Search functionality (case-insensitive)
 searchInput.addEventListener('input', () => {
   const query = searchInput.value.toLowerCase();
   const filteredStudents = students.filter(student => {
@@ -45,7 +50,7 @@ searchInput.addEventListener('input', () => {
   renderStudents(filteredStudents);
 });
 
-
+// Sorting functionality
 document.getElementById('sortAZ').addEventListener('click', () => {
   students.sort((a, b) => a.first_name.localeCompare(b.first_name));
   renderStudents(students);
@@ -62,8 +67,8 @@ document.getElementById('sortByMarks').addEventListener('click', () => {
 });
 
 document.getElementById('sortByPassing').addEventListener('click', () => {
-  const passingStudents = students.filter(student => student.passing);
-  renderStudents(passingStudents);
+  students.sort((a, b) => Number(b.passing) - Number(a.passing));
+  renderStudents(students);
 });
 
 document.getElementById('sortByClass').addEventListener('click', () => {
